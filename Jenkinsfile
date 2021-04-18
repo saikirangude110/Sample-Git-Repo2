@@ -16,12 +16,6 @@ pipeline {
             }
 		}
 			
-        stage ("cleaning build classes") {
-            steps {
-                sh 'mvn clean'
-            }
-        }
-
         stage ("Compiling The Source Code") {
             steps {
                 sh 'mvn compile'
