@@ -43,6 +43,7 @@ pipeline {
         stage ("Deploying Artifact to tomcat server") {
             steps {
                 sshPublisher(publishers: [sshPublisherDesc(configName: 'Ansible_sever', transfers: [sshTransfer(cleanRemote: false, excludes: '', execCommand: 'sudo ansible-playbook /etc/ansible/playbooks/deploy-artifact.yml', execTimeout: 120000, flatten: false, makeEmptyDirs: false, noDefaultExcludes: false, patternSeparator: '[, ]+', remoteDirectory: '', remoteDirectorySDF: false, removePrefix: 'Tasks/Tasks-1/Jenkins_Pipeline/target/', sourceFiles: 'Tasks/Tasks-1/Jenkins_Pipeline/target/trucks.war')], usePromotionTimestamp: false, useWorkspaceInPromotion: false, verbose: false)])
-        }
+	    }
+	}
     }      
 }
