@@ -39,5 +39,11 @@ pipeline {
                 sshPublisher(publishers: [sshPublisherDesc(configName: 'Ansible_sever', transfers: [sshTransfer(cleanRemote: false, excludes: '', execCommand: 'sudo ansible-playbook /etc/ansible/playbooks/docker-file.yml', execTimeout: 120000, flatten: false, makeEmptyDirs: false, noDefaultExcludes: false, patternSeparator: '[, ]+', remoteDirectory: '', remoteDirectorySDF: false, removePrefix: 'Tasks/Tasks-1/Jenkins_Pipeline/target/', sourceFiles: 'Tasks/Tasks-1/Jenkins_Pipeline/target/trucks.war')], usePromotionTimestamp: false, useWorkspaceInPromotion: false, verbose: false)])
 	    }
 	}
+	    
+	stage ("Building docker image and launching container") {
+            steps {
+		 sshPublisher(publishers: [sshPublisherDesc(configName: 'Docker-host', transfers: [sshTransfer(cleanRemote: false, excludes: '', execCommand: 'sudo docker build -t tomcat:1.0 /dockerfiles; sudo docker login; sudo docker tag tomcat:1.0 saikirangude/dockerfiles:1.0; sudo docker push saikirangude/dockerfiles:1.0; sudo docker run -d -p 8080:8080 saikirangude/dockerfiles:1.0 --name=tomcat-container', execTimeout: 120000, flatten: false, makeEmptyDirs: false, noDefaultExcludes: false, patternSeparator: '[, ]+', remoteDirectory: '', remoteDirectorySDF: false, removePrefix: '/jenkins_home/workspace/Tasks/Tasks-1/Jenkins_Pipeline_2/target/', sourceFiles: '/jenkins_home/workspace/Tasks/Tasks-1/Jenkins_Pipeline_2/target/trucks.war')], usePromotionTimestamp: false, useWorkspaceInPromotion: false, verbose: false)])
+	    }
+	}
     }      
 }
