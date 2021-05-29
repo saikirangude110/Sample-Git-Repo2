@@ -19,16 +19,16 @@
     <finalName>trucks</finalName>
   </build>
   
-  <distributionManagement>
+<distributionManagement>
     <repository>
         <id>central</id>
-        <name>ip-10-0-0-166.us-east-2.compute.internal-releases</name>
-        <url>http://3.135.78.107:8081/artifactory/Test6</url>
+        <name>ip-172-31-6-91.ec2.internal-releases</name>
+        <url>http://18.207.180.198:8081/artifactory/Test3</url>
     </repository>
     <snapshotRepository>
         <id>snapshots</id>
-        <name>ip-10-0-0-166.us-east-2.compute.internal-snapshots</name>
-        <url>http://3.135.78.107:8081/artifactory/Test6</url>
+        <name>ip-172-31-6-91.ec2.internal-snapshots</name>
+        <url>http://18.207.180.198:8081/artifactory/Test3</url>
     </snapshotRepository>
 </distributionManagement>
   
